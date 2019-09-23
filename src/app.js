@@ -34,15 +34,18 @@ process.on('SIGINT', () => {
     });
 });
 
-// Load models
+// Carregando os models
 const Mentions = require('./models/mentions');
 
-// Load routes
+// Carregar rotas
 const indexRoutes = require('./routes/index-routes');
 app.use('/', indexRoutes);
 
+// Prepara retorno do Json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Rotas para as menções
 const mentionsRoutes = require('./routes/mentions-routes');
 app.use('/mentions', mentionsRoutes);
 

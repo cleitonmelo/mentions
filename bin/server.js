@@ -1,9 +1,7 @@
 const app = require('../src/app');
 const http = require('http');
 const debug = require('debug')('nodestr:server');
-const body_parser = require('body-parser');
 
-// PORT // based on express-generator
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
@@ -21,7 +19,7 @@ function normalizePort(val) {
 const port = normalizePort(process.env.PORT || 3000);
 app.set('port', port);
 
-// error handler
+// Tratamento de erro
 function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
@@ -43,7 +41,7 @@ function onError(error) {
     }
 }
 
-// listener handler
+// listener
 function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
@@ -55,4 +53,4 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log('API is alive on ${port}!');
+console.log('API is alive on '+ port +'!');

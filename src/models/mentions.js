@@ -12,4 +12,5 @@ const schema = new Schema({
         required: true
     }
 });
+
 module.exports = mongoose.model('Mentions',schema);
